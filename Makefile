@@ -1,5 +1,5 @@
 GENERATED_FILES = finished/UHCL_prerequisites.xml
-PROCESSORS = "processors/"
+PROCESSORS = "./processors"
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail
@@ -20,15 +20,15 @@ finished/UHCL_prerequisites.xml: UHCL_catalog_excerpt_419-573_parsed_xml.xml
 
 .INTERMEDIATE: UHCL_catalog_excerpt_419-573_parsed_xml.xml
 UHCL_catalog_excerpt_419-573_parsed_xml.xml: UHCL_catalog_excerpt_419-573_xml.xml
-	cat $< | python $(PROCESSORS)parse_xml.py > $@
+	cat $< | python $(PROCESSORS)/parse_xml.py > $@
 
 .INTERMEDIATE: UHCL_catalog_excerpt_419-573_xml.xml
 UHCL_catalog_excerpt_419-573_xml.xml: UHCL_catalog_excerpt_419-573.pdf
-	python $(PROCESSORS)convert_pdf2xml.py $< > $@
+	python $(PROCESSORS)/convert_pdf2xml.py $< > $@
 
 .INTERMEDIATE: UHCL_catalog_excerpt_419-573.pdf
 UHCL_catalog_excerpt_419-573.pdf: UHCL_catalog.pdf
-	python $(PROCESSORS)excerpt_PDF.py $< > $@
+	python $(PROCESSORS)/excerpt_PDF.py $< > $@
 
 .INTERMEDIATE: UHCL_catalog.pdf
 UHCL_catalog.pdf:
