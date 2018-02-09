@@ -14,7 +14,6 @@ all: $(GENERATED_FILES)
 clean:
 	rm -Rf finished/*
 
-
 finished/UHCL_prerequisites.xml: UHCL_catalog_excerpt_419-573_parsed_xml.xml
 	sed '/<course\/>/d' ./$< > $@
 
