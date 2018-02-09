@@ -1,5 +1,6 @@
+UHCL_CATALOG_URL = https://catalog.uhcl.edu/current/undergraduate/catalog.pdf
 GENERATED_FILES = finished/UHCL_prerequisites.xml
-PROCESSORS = "./processors"
+PROCESSORS = ./processors
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail
@@ -31,4 +32,4 @@ UHCL_catalog_excerpt_419-573.pdf: UHCL_catalog.pdf
 
 .INTERMEDIATE: UHCL_catalog.pdf
 UHCL_catalog.pdf:
-	wget -O UHCL_catalog.pdf https://catalog.uhcl.edu/current/undergraduate/catalog.pdf
+	wget -O UHCL_catalog.pdf $(UHCL_CATALOG_URL)
